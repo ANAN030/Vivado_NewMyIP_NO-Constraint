@@ -1,0 +1,7 @@
+Running: xsim.dir/MyIP_Adder8bit_tb_behav/xsimk -simmode gui -wdb MyIP_Adder8bit_tb_behav.wdb -simrunnum 0 -socket 46662
+Design successfully loaded
+Design Loading Memory Usage: 47232 KB (Peak: 47352 KB)
+Design Loading CPU Usage: 30 ms
+Simulation completed
+Simulation Memory Usage: 129228 KB (Peak: 194504 KB)
+Simulation CPU Usage: 30 ms

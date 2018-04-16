@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/anan/git-home/Vivado_NewMyIP/MyIP_Test/MyIP_Test.srcs/sources_1/new/MyIP_Adder8bit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MyIP_Adder8bit
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/anan/git-home/Vivado_NewMyIP/MyIP_Test/MyIP_Test.srcs/sim_1/new/MyIP_Adder8bit_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MyIP_Adder8bit_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/anan/git-home/Vivado_NewMyIP/MyIP_Test/MyIP_Test.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
