@@ -4,7 +4,7 @@
 
 # 建立自己的IP
 步驟 1
-> 創建一個新的專案,要做建立自己IP用.<br>
+> 創建一個新的專案,要做為測試自己IP用功能用.<br>
 > 假如不會創建的話可以到我之前做的範例步驟1到步驟6中看到,傳送門如下：<br>
 > https://github.com/ANAN030/Vivado_Basic
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/01.png "01")
@@ -43,7 +43,7 @@
 > 開始設計自己的IP功能,這邊我就不用邏輯閘的方式去設計加法器了,就直接使用Vivado內建的加法器,假如你需要特殊的加法器或其它功能,在自己設計就好.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/08.png "08")
 > 程式碼如下：
-> ```v
+> ```sv
 > module MyIP_Adder8bit(
 >     input CLK,
 >     input [7:0] A,
@@ -60,6 +60,7 @@
 
 步驟 9
 > 設計完IP功能後,接下來就是要建立模擬測試用的檔案.
+> （假如不想跑行為模式模擬測試功能的話,可以直接跳到步驟19,直接開始包裝成IP）
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/13.png "13")
 
 步驟 10
@@ -117,12 +118,15 @@
 > ```
 
 步驟 17
+> 編寫完後,就可以開始跑行為模式模擬測試.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/21.png "21")
 
 步驟 18
+> 接下來看一下行為模擬出來的數據,在35ns(圈一)時,A和B輸入會產生變化,可是S輸出不會有變化,那是因為設計的加法器是由CLK正緣時,才會有觸發開始運算,所以要等到下次的CLK正緣觸發,那就是在50ns(圈2)時,運算才會開始,所以在50ns才會看到算結果,不過這邊要特別強調一下在真實電路中,不會像上面看到的觸發時,立刻產生變化,會有運算時間和電路延遲時間等等.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/22.png "22")
 
 步驟 19
+> 都測試完成後,且沒有功能上的錯誤,就可以開始把測試完的電路包裝成IP.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/23.png "23")
 
 步驟 20
