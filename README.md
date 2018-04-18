@@ -84,7 +84,7 @@
 > 這邊就可以開始編寫,模擬測試用的程式.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/20.png "20")
 > 程式碼如下：
-> ```v
+> ```sv
 > module MyIP_Adder8bit_tb();
 >
 >     reg CLK_tb;
