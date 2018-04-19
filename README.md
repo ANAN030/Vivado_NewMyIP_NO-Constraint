@@ -2,6 +2,9 @@
 這次會用Vivado做一個自己的IP,並跑模擬測試IP功能是否正確,而IP功能會做一個簡單的8-bit加法器,
 最後並搭配AXI-GPIO和LED一起實做.
 
+# 影片
+未完成......
+
 # 建立自己的IP
 步驟 1
 > 創建一個新的專案,要做為測試自己IP用功能用.<br>
@@ -178,7 +181,7 @@
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/34.png "34")
 > 在最下面加入這些程式碼,讓功能加進IP中.<br>
 > S_AXI_ACLK--->這是AXI的CLK,直接拉進來共用.<br>
-> slv_reg0--->這是編號零的記憶體,我們把它作為PS對PL送數據用.<br>
+> slv_reg0--->這是編號零的記憶體,我們把它做為PS對PL送數據用.<br>
 > MyIP_out--->這是自行宣告的,用作輸出用.
 > ```sv
 > wire [8:0] MyIP_out;
@@ -198,3 +201,42 @@
 步驟 33
 > 在這邊自己的IP就完成了.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/37.png "37")
+
+# 專案製作-Vivado設計部份
+步驟 1
+> 再創建一個新的專案,要當實做用得專案.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/38.png "38")
+
+步驟 2
+> 新增設計區塊.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/39.png "39")
+
+步驟 3
+> 加入PS的部份.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/40.png "40")
+
+步驟 4
+> 讓Vivado自動接線.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/41.png "41")
+
+步驟 5
+> 加入AXI_GPIO.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/42.png "42")
+
+步驟 6
+> GPIO設定為LED.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/43.png "43")
+
+步驟 7
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/44.png "44")
+
+步驟 8
+> 現在直接去找我們自建的IP,會是沒有的,所以我們要先將自建的IP加進來.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/45.png "45")
+
+步驟 9
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/46.png "46")
+
+步驟 10
+> 把自建的IP加進去(建立自己的IP中的步驟22)
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/47.png "47")
