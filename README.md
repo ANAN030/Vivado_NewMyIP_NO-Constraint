@@ -131,3 +131,60 @@
 
 步驟 20
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/24.png "24")
+
+步驟 21
+> 因為PS和PL需要做通訊,而這次也是用AXI-GPIO,所以選擇這個要來建立.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/25.png "25")
+
+步驟 22
+> 專案路徑會建立一個資料夾,而這資料夾可以把其他自己做的IP都放進去,要是下次要用,就可以直接把所有自己做的IP都加進去.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/26.png "26")
+
+步驟 23
+> 這邊會做設定AXI-GPIO,像是增加AXI-GPIO和要有多少個記體體等等,都依需要可以自行更改.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/27.png "27")
+
+步驟 24
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/28.png "28")
+
+步驟 25
+> 會自動開啟一個新的Vivado,就用這新開的開始建立自己的IP.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/29.png "29")
+
+步驟 26
+> 現在要把剛剛測試完的功能加進IP中.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/30.png "30")
+
+步驟 27
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/31.png "31")
+
+步驟 28
+> 把我們剛剛做的加進去.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/32.png "32")
+> 檔案路徑：
+> ```
+> "專案名稱"/"專案名稱" + .srcs/sources_1/new
+> ```
+> 例.
+> ```
+> MyIP_Test/MyIP_Test.srcs/sources_1/new
+> ```
+
+步驟 29
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/33.png "33")
+
+步驟 30
+> 把測試完的功能加進去IP中.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/34.png "34")
+> 在最下面加入這些程式碼,讓功能加進IP中.<br>
+> S_AXI_ACLK--->這是AXI的CLK,直接拉進來共用.<br>
+> slv_reg0--->這是編號零的記憶體,我們把它作為PS對PL送數據用.<br>
+> MyIP_out--->這是自行宣告的,用作輸出用.
+> ```sv
+> wire [8:0] MyIP_out;
+> MyIP_Adder8bit U1(.CLK(S_AXI_ACLK), .A(slv_reg0[7:0]), .B(slv_reg0[15:8]), .S(MyIP_out));
+> ```
+> 修改這行,是為了要把自己IP運算完的數據,從PL送回PS.
+> ```
+> 2'h1   : reg_data_out <= MyIP_out;
+> ```
