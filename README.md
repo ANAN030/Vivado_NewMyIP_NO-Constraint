@@ -185,6 +185,16 @@
 > MyIP_Adder8bit U1(.CLK(S_AXI_ACLK), .A(slv_reg0[7:0]), .B(slv_reg0[15:8]), .S(MyIP_out));
 > ```
 > 修改這行,是為了要把自己IP運算完的數據,從PL送回PS.
-> ```
+> ```sv
 > 2'h1   : reg_data_out <= MyIP_out;
 > ```
+
+步驟 31
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/35.png "35")
+
+步驟 32
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/36.png "36")
+
+步驟 33
+> 在這邊自己的IP就完成了.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/37.png "37")
