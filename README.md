@@ -197,18 +197,19 @@
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/25.png "25")
 
 步驟 22
-> 專案路徑會建立一個資料夾,而這資料夾可以把其他自己做的IP都放進去,要是下次要用,就可以直接把所有自己做的IP都加進去.
+> 會建立一個IP集路徑,而可以把其他自己做的IP都放進去這IP集路徑,要是下次要用,就可以直接把所有自己做的IP都加進去.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/26.png "26")
 
 步驟 23
-> 這邊會做設定AXI-GPIO,像是增加AXI-GPIO和要有多少個記體體等等,都依需要可以自行更改.
+> 這邊會做設定AXI-GPIO,像是增加AXI-GPIO數量和要有多少個記憶體等等,都可以依需要自行更改.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/27.png "27")
 
 步驟 24
+> 去編輯IP.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/28.png "28")
 
 步驟 25
-> 會自動開啟一個新的Vivado,就用這新開的開始建立自己的IP.
+> 會自動開啟一個新建的Vivado,就用這新建的Vivado編輯自己的IP.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/29.png "29")
 
 步驟 26
@@ -221,13 +222,13 @@
 步驟 28
 > 把我們剛剛做的加進去.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/32.png "32")
-> 檔案路徑：
+> 剛剛做的功能的檔案路徑如下：
 > ```
-> "專案名稱"/"專案名稱" + .srcs/sources_1/new
+> "專案名稱"/"專案名稱" + .srcs/sources_1/new/"檔案" + .v
 > ```
 > 例.
 > ```
-> MyIP_Test/MyIP_Test.srcs/sources_1/new
+> MyIP_Test/MyIP_Test.srcs/sources_1/new/MyIP_Adder8bit.v
 > ```
 
 步驟 29
