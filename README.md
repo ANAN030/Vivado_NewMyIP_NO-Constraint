@@ -7,7 +7,7 @@
 
 # 建立自己的IP
 步驟 1
-> 創建一個新的專案,要做為測試自己IP用功能用.<br>
+> 創建一個新的專案,要做為測試自己IP功能用.<br>
 > 假如不會創建的話可以到我之前做的範例步驟1到步驟6中看到,傳送門如下：<br>
 > https://github.com/ANAN030/Vivado_Basic
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/01.png "01")
@@ -31,7 +31,7 @@
 步驟 7
 > 加法器就用兩個要計算的A和B,及一個觸發CLK和運算過後的輸出S組成,如下圖：
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/07-1.png "07")
-> <br>因為要做8-bit的加法器,所以輸入的A和B會設定成8-bit,不過要注意輸出的部份,那就是S會設定為9-bit,那是因為會有溢位,下面我簡單舉個例子,讓各位更清楚.<br>
+> <br>因為要做8-bit的加法器,所以輸入的A和B會設定成8-bit,不過要注意輸出的部份,那就是S會設定為9-bit,那是因為會有溢位的問題存在,下面我簡單舉個例子,讓各位更清楚溢位是什麼意思.<br>
 > ```
 > 例.
 >
@@ -39,12 +39,14 @@
 >  +   0110 0100   ---> 100
 > ————————————————
 >    1 0011 0101   ---> 9-bit的話值會是309,要是8-bit的話值就變成53
+>    ↓
+>   溢位
 > ```
 > 參數設定如下：
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/07.png "07")
 
 步驟 8
-> 開始設計自己的IP功能,這邊我就不用邏輯閘的方式去設計加法器了,就直接使用Vivado內建的加法器,假如你需要其它功能,再自己設計就好.
+> 開始設計自己的IP功能,這邊我就不用邏輯閘的方式去設計加法器了,就直接使用Vivado的加法,假如你需要其它功能,再自己設計就好.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/08.png "08")
 > 程式碼如下：
 > ```sv
@@ -61,11 +63,11 @@
 >     
 > endmodule
 > ```
-> 一開始不會有reg,要自行加上.
+> 一開始不會有reg,要自行加上,因為輸出在定義時要給個記憶體,而最後是否要生記憶體時,就由生成工具去判斷要不要有記憶體.
 > ```sv
 > output reg [8:0] S
 > ```
-> "posedge CLK"代表CLK正緣觸發,觸發時,執行區塊內的動作.
+> "posedge CLK"代表CLK在正緣時,觸發區塊內的動作,也就是俗稱的正緣觸發.
 > ```sv
 > always @ (posedge CLK) begin
 >     .
@@ -73,14 +75,14 @@
 >     .
 > end
 > ```
-> 這邊的"+"在合成時,會由合成工具生成加法的電路.
+> 這邊的"+"會在合成時,由合成工具生成加法的電路,可以減少我們設計電路的難度,不過也是可以自己設計加法器電路.
 > ```sv
 > S = A + B;
 > ```
 
 
 步驟 9
-> 設計完IP功能後,接下來就是要建立模擬測試用的檔案.
+> 設計完IP功能後,接下來就是要建立模擬測試用的檔案.<br>
 > （假如不想跑行為模式模擬測試功能的話,可以直接跳到步驟19,直接開始包裝成IP）
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/13.png "13")
 
@@ -156,7 +158,7 @@
 > .
 > end
 > ```
-> 要先把所有的做初始化的動作,不然模擬時,一開始都會是亂碼(X),再來"#35"功能是等待35個時間單位,才會開始執行下一個程式.
+> 要先把所有的輸入做初始化的動作,不然模擬時,一開始都會是亂碼(X),再來"#35"功能是等待35個時間單位,才會開始執行下一個程式.
 > ```sv
 > CLK_tb = 0;
 > A_tb = 0;
@@ -238,8 +240,8 @@
 > 把測試完的功能加進去IP中.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/34.png "34")
 > 在最下面加入這些程式碼,讓功能加進IP中.<br>
-> S_AXI_ACLK--->這是AXI的CLK,直接拉進來共用.<br>
-> slv_reg0--->這是編號零的記憶體,我們把它做為PS對PL送數據用.<br>
+> S_AXI_ACLK--->這是AXI在用的CLK,直接拉進來共用.<br>
+> slv_reg0--->這是編號零的記憶體,把它做為PS和PL交換數據用.<br>
 > MyIP_out--->這是自行宣告的,用作輸出用.
 > ```sv
 > wire [8:0] MyIP_out;
