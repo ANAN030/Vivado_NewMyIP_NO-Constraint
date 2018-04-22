@@ -300,7 +300,7 @@
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/46.png "46")
 
 步驟 10
-> 把IP集加進去(路徑在建立自己的IP中的步驟22)
+> 把IP集加進去(IP集路徑在建立自己的IP中的步驟22)
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/47.png "47")
 
 步驟 11
@@ -319,7 +319,7 @@
 > 儲存與驗證.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/52.png "52")
 > 假如你有出現這個警告,通常是你用Vivado 2017的版本會出現的問題,而這不會影響到結果,所以這邊先無視.<br>
-> 我有找到也有人遇到這問題的解釋,假如有興趣可以點進去看看,傳送門如下：
+> 我有找到也有人遇到這問題的解釋,假如有興趣可以點進去看看,傳送門如下：<br>
 > https://forums.xilinx.com/t5/Design-Entry/Vivado-critical-warning-when-creating-hardware-wrapper/m-p/767113#M13539
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/51.png "51")
 
@@ -348,6 +348,7 @@
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/59.png "59")
 
 步驟 22
+> 可以調高使用多少核心去做生成,可以稍微加速一點.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/60.png "60")
 
 步驟 23
@@ -355,7 +356,7 @@
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/61.png "61")
 
 步驟 24
-> 生成完後,這邊我們就不去看生成後的電路分佈了.
+> 生成完後,這邊我們就不去看生成後的電路分佈了,有興趣可以按OK進去看一下.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/62.png "62")
 
 步驟 25
@@ -403,25 +404,25 @@
 > ```C
 > #include <stdio.h>
 > #include <stdlib.h>
-> #include "xparameters.h"		// 參數集.
-> #include "xgpio.h"	// 簡化PS對PL的GPIO操作的函數庫.
+> #include "xparameters.h"    // 參數集.
+> #include "xgpio.h"    // 簡化PS對PL的GPIO操作的函數庫.
 >
 > // 主程式.
 > int main()
 > {
->     XGpio LED_XGpio;		// 宣告一個GPIO用的結構.
->     u32 adder_out;		// 暫存MyIP_Adder8bit運算結果用.
+>     XGpio LED_XGpio;    // 宣告一個GPIO用的結構.
+>     u32 adder_out;    // 暫存MyIP_Adder8bit運算結果用.
 >
->     XGpio_Initialize(&LED_XGpio, XPAR_AXI_GPIO_0_DEVICE_ID);	// 初始化LED_XGpio.
->     XGpio_SetDataDirection(&LED_XGpio, 1, 0);		// 設置通道.
+>     XGpio_Initialize(&LED_XGpio, XPAR_AXI_GPIO_0_DEVICE_ID);    // 初始化LED_XGpio.
+>     XGpio_SetDataDirection(&LED_XGpio, 1, 0);    // 設置通道.
 >
 >     printf("Start!!!\n");
 >
->     Xil_Out32(XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR, 0x00000703);		// "0x00000703"寫進MyIP的記憶體位址.
+>     Xil_Out32(XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR, 0x00000703);    // "0x00000703"寫進MyIP的記憶體位址.
 >
->     adder_out = Xil_In32(XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR + 4);		// 把運算完的結果讀取出來.
+>     adder_out = Xil_In32(XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR + 4);    // 把運算完的結果讀取出來.
 >
->     XGpio_DiscreteWrite(&LED_XGpio, 1, adder_out);		// LED_XGpio通道,送adder_out值進去.
+>     XGpio_DiscreteWrite(&LED_XGpio, 1, adder_out);    // LED_XGpio通道,送adder_out值進去.
 >
 >     printf("adder_out = %x\n", adder_out);
 >
@@ -435,9 +436,11 @@
 
 步驟 9
 > 接下來要將Vivado所生成的位元流設定進FPGA晶片中.<br>
-> 要是Bitstream沒有東西的話,可以到之前的範例Xilinx SDK部份的步驟10看如何加進去,傳送門如下：<b>
+> 要是Bitstream沒有東西的話,可以到之前的範例Xilinx SDK部份的步驟10看如何加進去,傳送門如下：<br>
 > https://github.com/ANAN030/Vivado_Basic
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/74.png "74")
+> 當執行成功後,可以看到藍色的燈會亮起來.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/ZedBoard04.JPG "ZedBoard04")
 
 步驟 10
 > 把UART給接上.
