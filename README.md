@@ -8,7 +8,7 @@
 # 建立自己的IP
 步驟 1
 > 創建一個新的專案,要做為測試自己IP功能用.<br>
-> 假如不會創建的話可以到我之前做的範例步驟1到步驟6中看到,傳送門如下：<br>
+> 假如不會創建的話可以到我之前做的範例Vivado部份的步驟1到步驟6中看到,傳送門如下：
 > https://github.com/ANAN030/Vivado_Basic
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/01.png "01")
 
@@ -75,11 +75,10 @@
 >     .
 > end
 > ```
-> 這邊的"+"會在合成時,由合成工具生成加法的電路,可以減少我們設計電路的難度,不過也是可以自己設計加法器電路.
+> 這邊的"+"會在合成時,由合成工具生成加法的電路,可以減少我們設計電路的複雜度,不過也是可以用自己設計加法器電路.
 > ```sv
 > S = A + B;
 > ```
-
 
 步驟 9
 > 設計完IP功能後,接下來就是要建立模擬測試用的檔案.<br>
@@ -264,8 +263,8 @@
 
 # 專案製作-Vivado設計部份
 步驟 1
-> 再創建一個新的專案,要當實做用的專案.
-> 假如不會創建的話可以到我之前做的範例步驟1到步驟6中看到,傳送門如下：
+> 再創建一個新的專案,要當實做用的專案.<br>
+> 假如不會創建的話可以到我之前做的範例Vivado部份的步驟1到步驟6中看到,傳送門如下：
 > https://github.com/ANAN030/Vivado_Basic
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/38.png "38")
 
@@ -290,6 +289,7 @@
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/43.png "43")
 
 步驟 7
+> AXI-GPIO接線設定.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/44.png "44")
 
 步驟 8
@@ -300,5 +300,156 @@
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/46.png "46")
 
 步驟 10
-> 把自建的IP加進去(路徑在建立自己的IP中的步驟22)
+> 把IP集加進去(路徑在建立自己的IP中的步驟22)
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/47.png "47")
+
+步驟 11
+> 這邊就可以看到剛剛做的IP了.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/48.png "48")
+
+步驟 12
+> 輸入自建的IP,就可以看到了.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/49.png "49")
+
+步驟 13
+> AXI-GPIO接線設定.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/50.png "50")
+
+步驟 14
+> 儲存與驗證.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/52.png "52")
+> 假如你有出現這個警告,通常是你用Vivado 2017的版本會出現的問題,而這不會影響到結果,所以這邊先無視.<br>
+> 我有找到也有人遇到這問題的解釋,假如有興趣可以點進去看看,傳送門如下：
+> https://forums.xilinx.com/t5/Design-Entry/Vivado-critical-warning-when-creating-hardware-wrapper/m-p/767113#M13539
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/51.png "51")
+
+步驟 15
+> 將設計區塊的設計,自動生成為HDL（硬體描述語言）和相對應的約束文件.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/53.png "53")
+
+步驟 16
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/54.png "54")
+
+步驟 17
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/55.png "55")
+
+步驟 18
+> 將剛剛生成的HDL,用頂層文件包裝起來.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/56.png "56")
+
+步驟 19
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/57.png "57")
+
+步驟 20
+> 接下來就是生成位元流,而FPGA就是靠這位元流來設定電路的.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/58.png "58")
+
+步驟 21
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/59.png "59")
+
+步驟 22
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/60.png "60")
+
+步驟 23
+> 等一小段時間,讓Vivado生成.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/61.png "61")
+
+步驟 24
+> 生成完後,這邊我們就不去看生成後的電路分佈了.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/62.png "62")
+
+步驟 25
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/63.png "63")
+
+步驟 26
+> "Include bitstream"這要勾起,不然等等要自己去選擇位元流檔的位置,除非你要用另外的位元流檔.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/64.png "64")
+
+步驟 27
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/65.png "65")
+
+步驟 28
+> 這是Vivado的最後步驟,Vivado會去打開Xilinx SDK,那我們就可開始設計PS部份了.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/66.png "66")
+
+# 專案製作-Xilinx SDK設計部份
+
+步驟 1
+> Xilinx SDK一開始會載入一些在Vivado的檔案,等載入完就會看到這個畫面.<br>
+> p.s.遇到載入失敗的話,我是把Vivado和SDK分開灌就解決,假如有遇到可以試試看這方法.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/67.png "67")
+
+步驟 2
+> 新增一個專案.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/68.png "68")
+
+步驟 3
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/69.png "69")
+
+步驟 4
+> 選擇"Empty Application",這是建立一個空的專案,你也可以選擇"Hello World",會自動幫你建一些簡單的檔案.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/70.png "70")
+
+步驟 5
+> 因為我選擇空的專案,所以要新增一個.c檔.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/71.png "71")
+
+步驟 6
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/72.png "72")
+
+步驟 7
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/73.png "73")
+> 程式碼如下：
+> ```C
+> #include <stdio.h>
+> #include <stdlib.h>
+> #include "xparameters.h"		// 參數集.
+> #include "xgpio.h"	// 簡化PS對PL的GPIO操作的函數庫.
+>
+> // 主程式.
+> int main()
+> {
+>     XGpio LED_XGpio;		// 宣告一個GPIO用的結構.
+>     u32 adder_out;		// 暫存MyIP_Adder8bit運算結果用.
+>
+>     XGpio_Initialize(&LED_XGpio, XPAR_AXI_GPIO_0_DEVICE_ID);	// 初始化LED_XGpio.
+>     XGpio_SetDataDirection(&LED_XGpio, 1, 0);		// 設置通道.
+>
+>     printf("Start!!!\n");
+>
+>     Xil_Out32(XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR, 0x00000703);		// "0x00000703"寫進MyIP的記憶體位址.
+>
+>     adder_out = Xil_In32(XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR + 4);		// 把運算完的結果讀取出來.
+>
+>     XGpio_DiscreteWrite(&LED_XGpio, 1, adder_out);		// LED_XGpio通道,送adder_out值進去.
+>
+>     printf("adder_out = %x\n", adder_out);
+>
+>     return 0;
+> }
+> ```
+
+步驟 8
+> 把燒路線和電源打開.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/ZedBoard02.png "ZedBoard02")
+
+步驟 9
+> 接下來要將Vivado所生成的位元流設定進FPGA晶片中.<br>
+> 要是Bitstream沒有東西的話,可以到之前的範例Xilinx SDK部份的步驟10看如何加進去,傳送門如下：<b>
+> https://github.com/ANAN030/Vivado_Basic
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/74.png "74")
+
+步驟 10
+> 把UART給接上.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/ZedBoard03.png "ZedBoard03")
+
+步驟 11
+> 選擇端口.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/75.png "75")
+
+步驟 12
+> 那接下來就是在開發板執行.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/76.png "76")
+
+# 結果
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/77.png "77")
