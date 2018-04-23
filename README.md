@@ -430,7 +430,7 @@
 >     return 0;
 > }
 > ```
-> 這行是用做把計算的數據寫進記憶體中的某個地址,再由自建的IP去讀取記憶體某個地址,達到PS和PL通訊的功能,而那段地址就是"XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR",而這可以到這"xparameters.h"函數庫中看到,那因為在編寫IP功能時(建立自己的IP的步驟30),把記憶體編號零當作輸入運算,所以把要運算的數據寫進"0x43C00000"也就是"XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR"這參數.
+> 這是要把計算的數據寫進記憶體中的某個地址,而自建的IP會去讀取記憶體某個地址的數據,這樣就能達到PS和PL通訊的功能,而那段地址就是"XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR",而這可以到這"xparameters.h"函數庫中看到,那因為在編寫IP功能時(建立自己的IP的步驟30),把記憶體編號零當作輸入運算,所以把要運算的數據寫進"0x43C00000"也就是"XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR"這參數.
 > ```C
 > Xil_Out32(XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR, 0x00000703);    // "0x00000703"寫進MyIP的記憶體位址.
 > ```
