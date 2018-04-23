@@ -204,6 +204,8 @@
 步驟 23
 > 這邊會做設定AXI-GPIO,像是增加AXI-GPIO數量和要有多少個記憶體等等,都可以依需要自行更改.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/27.png "27")
+> Vivado會有這些記憶體空間,每組32位元4個記憶體位址,每個位址有8個位元,然後這邊設定4組記憶體.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/27-1.png "27-1")
 
 步驟 24
 > 去編輯IP.
