@@ -430,11 +430,18 @@
 >     return 0;
 > }
 > ```
-> 這是要把計算的數據寫進記憶體中的某個地址,而自建的IP會去讀取記憶體某個地址的數據,這樣就能達到PS和PL通訊的功能,而那段地址就是"XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR",而這可以到這"xparameters.h"函數庫中看到,那因為在編寫IP功能時(建立自己的IP的步驟30),把記憶體編號零當作輸入運算,所以把要運算的數據寫進"0x43C00000"也就是"XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR"這參數.
+> 這是要把計算的數據寫進記憶體中的某個位址,而自建的IP會去讀取記憶體某個位址的數據來做運算,這樣就能達到PS和PL通訊的功能,而那段位址就是"XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR".
 > ```C
 > Xil_Out32(XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR, 0x00000703);    // "0x00000703"寫進MyIP的記憶體位址.
 > ```
+> 而位址可以到這"xparameters.h"函數庫中看到,那因為在編寫IP功能時(建立自己的IP的步驟30),把記憶體編號零當作輸入運算,所以把要運算的數據寫進"0x43C00000"也就是"XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR"這參數直接帶入就可以了.
 > ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/73-1.png "73-1")
+> 這行的原理就跟剛剛的差不多,由自建的IP去對記憶體做寫入,再由PS端去對記憶體做讀取,就是下面這行的功能,只是地址的讀取就要跟自建的IP所寫入的位址要一致,才會讀到正確的數據.
+> ```C
+> adder_out = Xil_In32(XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR + 4);    // 把運算完的結果讀取出來.
+> ```
+> 那記憶體的位址在自建IP時(建立自己的IP的步驟30),把記憶體編號一改成連接輸出,所以這邊才要把位址指定到對的位址上,因此才要做"XPAR_MYIP_ADDER8BIT_0_S00_AXI_BASEADDR + 4"這個動作.
+> ![GITHUB](https://raw.githubusercontent.com/ANAN030/Vivado_NewMyIP/master/image/73-2.png "73-2")
 
 步驟 8
 > 把燒路線和電源打開.
