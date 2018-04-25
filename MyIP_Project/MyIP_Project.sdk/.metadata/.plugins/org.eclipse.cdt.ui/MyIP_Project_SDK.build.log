@@ -1,8 +1,8 @@
-18:09:16 **** Incremental Build of configuration Debug for project MyIP_Project_SDK ****
+18:36:50 **** Incremental Build of configuration Debug for project MyIP_Project_SDK ****
 make pre-build main-build 
 a9-linaro-pre-build-step
  
 make: Nothing to be done for 'main-build'.
 
-18:09:16 Build Finished (took 171ms)
+18:36:50 Build Finished (took 149ms)
 
